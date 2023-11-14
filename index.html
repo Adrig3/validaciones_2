@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de identificación</title>
+
+    <script> 
+        function comprobar_nombre(nombre) { 
+            const checknombre = (nombre === "adri") ? 1 : 0;
+            if (checknombre !== 1) {
+                alert("No se puede acceder");
+            } else {
+                comprobar_contra(document.forms["comprobar"].entrada2.value);
+            }
+        } 
+
+        function comprobar_contra(contra) { 
+            const checkcontra = (contra === "1234") ? 1 : 0;
+            if (checkcontra !== 1) {
+                alert("No se puede acceder");
+            } else {
+                alert("Acceso permitido");
+            }
+        } 
+
+        function validar_formulario() {
+            const nombre = document.forms["comprobar"].entrada1.value;
+            const contra = document.forms["comprobar"].entrada2.value;
+
+            if (nombre === "" || contra === "") {
+                alert("Por favor, completa todos los campos del formulario.");
+            } else {
+                comprobar_nombre(nombre);
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="comprobar">
+        Introduce tu nombre <input type="text" name="entrada1"> <br><br>
+        Introduce la contraseña <input type="text" name="entrada2">
+        <br><br>
+        <input type="button" value="Acceder" onclick="validar_formulario()" />
+    </form>
+</body>
+</html>
